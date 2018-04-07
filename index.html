@@ -1,0 +1,144 @@
+<html>
+  <head>
+      <title>VPS</title>
+    <script src="dist/aframe-master.js"></script>
+    <script src="node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.js"></script>
+    <script src="js/gazeControl.js"></script>
+
+  </head>
+  <body>
+    
+<!-- 1. INISIALISASI -->
+
+<!-- Deklarasi Scene -->
+<a-scene id="scene">
+
+<!--            Deklarasi Library-->
+<!--            Image-->
+<a-assets>
+<img id="space" src="img/space2.jpg">
+<img id="portal_bg" src="img/portal_bg.png">
+<img id="ring2" src="img/ring2.png">
+<img id="glow1" src="img/glow1.png">
+<img id="title" src="img/VPS.png">
+
+<img id="monumenkapalselam" src="img/wisata/monumenkapalselam.JPG">
+<img id="tugupahlawan" src="img/wisata/tugupahlawan.jpg">
+<img id="foodjunction" src="img/wisata/foodjunction.jpg">
+<img id="suroboyocarnival" src="img/wisata/suroboyocarnival.jpg">
+
+<!--            Sound-->
+<audio id="blip2" src="sound/blip2.wav"></audio>
+<audio id="shot" src="sound/click.ogg"></audio>
+</a-assets>
+
+<!-- 2. DESAIN WEBVR-->
+<!-- Portal -->
+<a-plane id="goto_home" class="clickable" src="#portal_bg" rotation="0 0 0" scale="8 4 1" position="0 1.6 8"></a-plane>
+<!-- Title -->
+<a-sky id="sky" src="#space"></a-sky>
+
+
+
+<!-- 3. Pemain (Kamera) -->
+<!-- Entitas Kamera -->
+
+<a-entity camera look-controls mouse-cursor id="mainCamera" position="0 0 10">
+
+<a-animation begin="goto_title" attribute="position" from="0 0 10" to="0 0 -1" dur="2000" easing="linear"></a-animation>
+
+<a-camera id="vr-camera" mouse-cursor wasd-controls-enabled="false" rotation="0 0 0">
+
+<a-entity id="cursor" position="0 0 -0.5" scale="0.2 0.2 0.2" geometry="primitive: ring; radiusOuter: 0.1; radiusInner: 0.05;" material="color: white; shader: flat" cursor="maxDistance:850; fuse: true" raycaster="objects: .clickable" sound="on: click; src: #shot; poolSize: 6">
+
+<a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="0.2 0.2 0.2" dur="150"></a-animation>
+<a-animation begin="fuse" easing="ease-in" attribute="scale" fill="backwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+
+</a-entity>
+</a-camera>
+</a-entity>
+
+<!-- START Animasi Kamera -->
+<!-- goto Title -->
+
+<!-- Goto Gameplay-->
+
+<!-- Camera -->
+
+<!--       END Animasi Kamera-->
+<!-- Cursor -->
+
+<!-- 4. Musuh Target -->
+<!--
+<a-box id="box" class="clickable" position="0 0.5 -7.5" rotation="0 45 0" color="blue" sound__1="on: click; src: #shot" sound__2="on: mouseenter; src: #blip2"></a-box>
+
+-->
+
+      <!-- 5. Setting Environment -->
+      <a-entity rotation="120 40 0" scale="3 3 3">
+
+        <a-entity rotation="0 0 0">
+          <a-animation attribute="rotation" to="0 0 360" dur="20000" easing="linear" repeat="indefinite"></a-animation>
+
+          <a-entity position="-18.25 -5 0" rotation="0 0 0">
+            <a-sphere radius="0.3" color="#7e3f1a"></a-sphere>
+            <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+            <a-entity position="0 10 0" rotation="0 0 -36">
+              <a-sphere radius="0.5" color="#372246"></a-sphere>
+              <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+              <a-entity position="0 10 0" rotation="0 0 -36">
+                <a-sphere radius="0.2" color="#7e3f1a"></a-sphere>
+                <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                <a-entity position="0 10 0" rotation="0 0 -36">
+                  <a-sphere radius="0.7" color="#372246"></a-sphere>
+                  <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                  <a-entity position="0 10 0" rotation="0 0 -36">
+                    <a-sphere radius="2" color="#7e3f1a"></a-sphere>
+                    <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                    <a-entity position="0 10 0" rotation="0 0 -36">
+                      <a-sphere radius="0.25" color="#7e3f1a"></a-sphere>
+                      <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                      <a-entity position="0 10 0" rotation="0 0 -36">
+                        <a-sphere radius="0.5" color="#7e3f1a"></a-sphere>
+                        <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                        <a-entity position="0 10 0" rotation="0 0 -36">
+                          <a-sphere radius="0.5" color="#7e3f1a"></a-sphere>
+                          <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                          <a-entity position="0 10 0" rotation="0 0 -36">
+                            <a-sphere radius="0.3" color="#372246"></a-sphere>
+                            <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                            <a-entity position="0 10 0" rotation="0 0 -36">
+                              <a-sphere radius="0.05" color="#7e3f1a"></a-sphere>
+                              <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                            </a-entity>
+                          </a-entity>
+                        </a-entity>
+                      </a-entity>
+                    </a-entity>
+                  </a-entity>
+                </a-entity>
+              </a-entity>
+            </a-entity>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+ 
+      </a-scene>
+      
+
+ <!-- 6. Simple Scripting -->
+      
+    <script src="js/game.js"></script>
+ 
+    </body>
+</html>
