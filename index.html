@@ -35,6 +35,8 @@
 <!-- 2. DESAIN WEBVR-->
 <!-- Portal -->
 <a-plane id="goto_home" class="clickable" src="#portal_bg" rotation="0 0 0" scale="8 4 1" position="0 1.6 8"></a-plane>
+<a-plane id="nextPage" class="clickable" color="yellow" rotation="0 0 0" scale="2 1 1" position="0 -1 -5"></a-plane>
+
 <!-- Title -->
 <a-sky id="sky" src="#space"></a-sky>
 
@@ -50,10 +52,10 @@
 <a-camera id="vr-camera" mouse-cursor wasd-controls-enabled="false" rotation="0 0 0">
 
 <a-entity id="cursor" position="0 0 -0.5" scale="0.2 0.2 0.2" geometry="primitive: ring; radiusOuter: 0.1; radiusInner: 0.05;" material="color: white; shader: flat" cursor="maxDistance:850; fuse: true" raycaster="objects: .clickable" sound="on: click; src: #shot; poolSize: 6">
-
+<!--
 <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="0.2 0.2 0.2" dur="150"></a-animation>
 <a-animation begin="fuse" easing="ease-in" attribute="scale" fill="backwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
-
+-->
 </a-entity>
 </a-camera>
 </a-entity>
