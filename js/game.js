@@ -23,8 +23,8 @@ signaling('goto_title');
 
 
 nextPage.addEventListener('click', function(){
-signaling('triggerAnimGallery');
-console.log('asas');
+//signaling('triggerAnimGallery');
+//console.log('asas');
 });
 
 
@@ -75,16 +75,26 @@ sc.appendChild(gallery);
 gallery.appendChild(card);
 cardNumber++;
 
+
 card.addEventListener('click', function(evt){
 var gallerygg = document.getElementById('card-gallery');
+
 if(gallerygg.getAttribute('visible') == true){
 console.log(evt.detail.target.id);
 if(evt.detail.target.id % 2 == 0)
-sky.setAttribute('color','blue');
+	{
+	signaling("goto_detail");
+	sky.setAttribute('color','blue');
+	}
 else
-sky.setAttribute('color','yellow');
+	{
+	sky.setAttribute('color','yellow');
+	}
+
 }	
+
 });
+
 
 card.addEventListener('mouseenter', function(evt){
 //alert('sdsdsdsds');
@@ -94,7 +104,6 @@ posY = posY - 1.5;
 }
 var cardAnim  = document.createElement('a-animation');
 cardAnim.setAttribute('id','cardAnim');
-alert('gfgfgf');
 }
 
 

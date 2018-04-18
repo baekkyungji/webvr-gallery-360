@@ -2,8 +2,12 @@
   <head>
       <title>VPS</title>
     <script src="dist/aframe-master.js"></script>
+    <script src="js/build.js"></script>
+    <script src="js/main.js"></script>
+    <script src="dist/aframe-text-geometry-component.js"></script>
     <script src="node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.js"></script>
     <script src="js/gazeControl.js"></script>
+
 
   </head>
   <body>
@@ -27,19 +31,28 @@
 <img id="foodjunction" src="img/wisata/foodjunction.jpg">
 <img id="suroboyocarnival" src="img/wisata/suroboyocarnival.jpg">
 
-<!--            Sound-->
+<!--            Sound
 <audio id="blip2" src="sound/blip2.wav"></audio>
-<audio id="shot" src="sound/click.ogg"></audio>
+<audio id="shot" src="sound/click.ogg"></audio> -->
 </a-assets>
 
 <!-- 2. DESAIN WEBVR-->
-<!-- Portal -->
+<!-- Plane Initialization -->
+<!--Portal-->
 <a-plane id="goto_home" class="clickable" src="#portal_bg" rotation="0 0 0" scale="8 4 1" position="0 1.6 8"></a-plane>
+<!--Gallery-->
 <a-plane id="nextPage" class="clickable" color="yellow" rotation="0 0 0" scale="2 1 1" position="0 -1 -5"></a-plane>
+<!--Detail Gallery-->
+<a-plane id="detail_pic" color="yellow" rotation="0 -90 0" scale="5 3 1" position="21.171 2.4 -10.496"></a-plane>
+<a-plane id="detail_360" color="blue" rotation="0 -90 0" scale="5 0.5 1" position="21.171 0.55 -10.496"></a-plane>
+<a-plane id="detail_sms" color="red" rotation="0 -90 0" scale="2.4 0.5 1" position="21.171 0 -11.8"></a-plane>
+<a-plane id="detail_call" color="purple" rotation="0 -90 0" scale="2.4 0.5 1" position="21.171 0 -9.2" text="value:asasas"></a-plane>
+<a-plane id="detail_back" color="white" rotation="0 -90 0" scale="5 0.5 1" position="21.171 -0.55 -10.496"></a-plane>
 
 <!-- Title -->
 <a-sky id="sky" src="#space"></a-sky>
 
+<a-entity id="txt" color="green" rotation="0 -90 0" position="19 -0.55 -10.496" scale="10 10 1" text-geometry="value:sdsds"></a-entity>
 
 
 <!-- 3. Pemain (Kamera) -->
@@ -48,9 +61,10 @@
 <a-entity camera look-controls mouse-cursor id="mainCamera" position="0 0 10">
 
 <a-animation begin="goto_title" attribute="position" from="0 0 10" to="0 0 -1" dur="2000" easing="linear"></a-animation>
+<a-animation begin="goto_detail" attribute="position" from="0 0 -1" to="16 0 -6" dur="2000" easing="linear"></a-animation>
+<a-animation begin="goto_detail" attribute="rotation" from="0 0 0" to="0 -90 0" dur="2000" easing="linear"></a-animation>
 
 <a-camera id="vr-camera" mouse-cursor wasd-controls-enabled="false" rotation="0 0 0">
-
 <a-entity id="cursor" position="0 0 -0.5" scale="0.2 0.2 0.2" geometry="primitive: ring; radiusOuter: 0.1; radiusInner: 0.05;" material="color: white; shader: flat" cursor="maxDistance:850; fuse: true" raycaster="objects: .clickable" sound="on: click; src: #shot; poolSize: 6">
 <!--
 <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="0.2 0.2 0.2" dur="150"></a-animation>
