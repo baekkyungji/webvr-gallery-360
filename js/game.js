@@ -81,33 +81,7 @@ cardNumber++;
 
 card.addEventListener('click', function(evt){
 
-switch(evt.detail.target.id){
-	/*
-			case 0:
-		        this.el.setAttribute('position', {
-		            x: currentPosition.x,
-		            y: currentPosition.y,
-		            z: currentPosition.z + vel
-		        });
-			break;
-			*/
-			case 0:{
-		        alert('nol');
-			
-		}
-			case 1:{
-		        alert('atu');
-			
-			}
-			case 2:{
-		        alert('atu');
-			
-			}
-			case 3:{
-		        alert('atu');
-			
-			}
-		}	
+	
 var gallerygg = document.getElementById('card-gallery');
 
 if(gallerygg.getAttribute('visible') == true){
@@ -116,11 +90,15 @@ if(evt.detail.target.id % 2 == 0)
 	{
 
 
-	var title = 'value:'+evt.detail.target.title;
+	var title;
 	var description = 'value:'+desc;
 	//console.log(description);
 	signaling("goto_detail");
+	//alert(evt.detail.target.id);
 	sky.setAttribute('color','blue');
+	if(evt.detail.target.id == 2){
+			title = 'value:'+'Duaa';
+		}
 	detail_title.setAttribute('text-geometry',title);
 	detail_desc.setAttribute('text-geometry',description);
 
