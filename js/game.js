@@ -3,11 +3,18 @@ var cam = document.getElementById('mainCamera');
 var plane = document.getElementById('card');
 var sc = document.getElementById('scene');
 var goto_home = document.getElementById('goto_home');
-var sky = document.getElementById('sky');
+var detail_title = document.getElementById('detail_title');
+var detail_desc = document.getElementById('detail_desc');
 var nextPage = document.getElementById('nextPage');
 
 var cards = [];
 var names = ['monumenkapalselam','tugupahlawan','foodjunction','suroboyocarnival'];
+var desc = [
+'Harga Tiket',
+'tugupahlawan',
+'foodjunction',
+'suroboyocarnival'
+];
 var posX='-1';
 var posY='4.5';
 var posZ='-7';
@@ -51,8 +58,8 @@ cam.emit(str);
 }
 function hideGallery()
 {
-var gallerygg = document.getElementById('card-gallery');
-gallerygg.setAttribute('visible','false');	
+var gallery_hidden = document.getElementById('card-gallery');
+gallery_hidden.setAttribute('visible','false');	
 }
 
 function createGallery()
@@ -60,13 +67,13 @@ function createGallery()
 
 var gallery  = document.createElement('a-entity');
 gallery.setAttribute('id','card-gallery');
-//alert('sasas');
 for (var i = 0; i < rowNumber; i++) {
 for (var j = 0; j < columnNumber; j++) {
 var card  = document.createElement('a-plane');
 card.setAttribute('position',{x:(-6+(j*3)), y:posY, z:posZ});
 card.setAttribute('scale','2 1 1');
 card.setAttribute('id',cardNumber);
+card.setAttribute('title','Monumen Kapal Selam');
 card.setAttribute('class','clickable');
 card.setAttribute('name',names[cardNumber]);
 card.setAttribute('src','#'+names[cardNumber]);
@@ -80,11 +87,17 @@ card.addEventListener('click', function(evt){
 var gallerygg = document.getElementById('card-gallery');
 
 if(gallerygg.getAttribute('visible') == true){
-console.log(evt.detail.target.id);
+console.log(evt);
+console.log(evt.detail.target.title);
 if(evt.detail.target.id % 2 == 0)
 	{
+	var title = 'value:'+evt.detail.target.title;
+	var description = 'value:'+desc[0];
+	//console.log(description);
 	signaling("goto_detail");
 	sky.setAttribute('color','blue');
+	detail_title.setAttribute('text-geometry',title);
+	detail_desc.setAttribute('text-geometry',description);
 	}
 else
 	{
