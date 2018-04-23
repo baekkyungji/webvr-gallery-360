@@ -9,12 +9,8 @@ var nextPage = document.getElementById('nextPage');
 
 var cards = [];
 var names = ['monumenkapalselam','tugupahlawan','foodjunction','suroboyocarnival'];
-var desc = [
-'Harga Tiket',
-'tugupahlawan',
-'foodjunction',
-'suroboyocarnival'
-];
+var desc = 'Tempat wisata yang menyimpan sejarah kapal selam yang menakjubkan';
+var harga = ['1000','100',]
 var posX='-1';
 var posY='4.5';
 var posZ='-7';
@@ -84,27 +80,59 @@ cardNumber++;
 
 
 card.addEventListener('click', function(evt){
+
+switch(evt.detail.target.id){
+	/*
+			case 0:
+		        this.el.setAttribute('position', {
+		            x: currentPosition.x,
+		            y: currentPosition.y,
+		            z: currentPosition.z + vel
+		        });
+			break;
+			*/
+			case 0:{
+		        alert('nol');
+			
+		}
+			case 1:{
+		        alert('atu');
+			
+			}
+			case 2:{
+		        alert('atu');
+			
+			}
+			case 3:{
+		        alert('atu');
+			
+			}
+		}	
 var gallerygg = document.getElementById('card-gallery');
 
 if(gallerygg.getAttribute('visible') == true){
-console.log(evt);
-console.log(evt.detail.target.title);
+
 if(evt.detail.target.id % 2 == 0)
 	{
+
+
 	var title = 'value:'+evt.detail.target.title;
-	var description = 'value:'+desc[0];
+	var description = 'value:'+desc;
 	//console.log(description);
 	signaling("goto_detail");
 	sky.setAttribute('color','blue');
 	detail_title.setAttribute('text-geometry',title);
 	detail_desc.setAttribute('text-geometry',description);
+
+
 	}
 else
 	{
 	sky.setAttribute('color','yellow');
 	}
 
-}	
+}
+
 
 });
 
